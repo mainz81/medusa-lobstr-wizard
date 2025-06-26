@@ -1,3 +1,9 @@
+@app.route("/")
+def index():
+    return """
+    <h1>Medusa LOBSTR Wallet Onboarding Wizard</h1>
+    <p>Welcome! <a href='/?step=1'>Start the Wallet Wizard</a></p>
+    """
 # Medusa's Interactive LOBSTR Onboarding Web Wizard
 # Flask web app: guides a user step-by-step through LOBSTR wallet creation.
 # To run: pip install flask; python medusa_lobstr_wizard.py
