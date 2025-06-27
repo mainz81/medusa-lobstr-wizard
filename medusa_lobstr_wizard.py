@@ -1,13 +1,3 @@
-@app.route("/")
-def index():
-    return """
-    <h1>Medusa LOBSTR Wallet Onboarding Wizard</h1>
-    <p>Welcome! <a href='/?step=1'>Start the Wallet Wizard</a></p>
-    """
-# Medusa's Interactive LOBSTR Onboarding Web Wizard
-# Flask web app: guides a user step-by-step through LOBSTR wallet creation.
-# To run: pip install flask; python medusa_lobstr_wizard.py
-
 from flask import Flask, render_template_string, request, redirect, url_for
 
 app = Flask(__name__)
@@ -17,7 +7,7 @@ steps = [
         "title": "Step 1: Visit LOBSTR and Start Signup",
         "desc": "Go to <a href='https://lobstr.co' target='_blank'>LOBSTR.co</a> and click <b>“Create Account”</b>.<br>"
                 "Enter your email and a strong, unique password.",
-        "img": "https://i.imgur.com/g8Q7Wry.png"  # (Replace with actual screenshot for your brand)
+        "img": "https://i.imgur.com/g8Q7Wry.png"
     },
     {
         "title": "Step 2: Confirm Your Email",
@@ -100,5 +90,6 @@ def complete():
         </body></html>
     """)
 
-if __name__ == "__main__":
-    app.run(debug=True, port=7082)
+# Do NOT use `if __name__ == "__main__"` for Render deployment.
+# Render will auto-detect app = Flask(__name__) for Gunicorn!
+
