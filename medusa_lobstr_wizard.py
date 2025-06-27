@@ -2,42 +2,38 @@ from flask import Flask, render_template_string, request, redirect, url_for
 
 app = Flask(__name__)
 
+MEDUSA_IMAGE_URL = "https://i.imgur.com/suT1dcv.jpg"
+
 steps = [
     {
         "title": "Step 1: Visit LOBSTR and Start Signup",
-        "desc": "Go to <a href='https://lobstr.co' target='_blank'>LOBSTR.co</a> and click <b>“Create Account”</b>.<br>"
-                "Enter your email and a strong, unique password.",
-        "img": "https://i.imgur.com/g8Q7Wry.png"
+        "desc": "Go to <a href='https://lobstr.co' target='_blank'>LOBSTR.co</a> and click <b>“Create Account”</b>.<br>Enter your email and a strong, unique password.",
+        "img": MEDUSA_IMAGE_URL
     },
     {
         "title": "Step 2: Confirm Your Email",
-        "desc": "Check your inbox (and spam folder).<br>"
-                "Click the confirmation link LOBSTR sent you.",
-        "img": "https://i.imgur.com/fcFxzxG.png"
+        "desc": "Check your inbox (and spam folder).<br>Click the confirmation link LOBSTR sent you.",
+        "img": MEDUSA_IMAGE_URL
     },
     {
         "title": "Step 3: Save Your Secret Key & Stellar Address",
-        "desc": "Once logged in, <b>write down your Secret Key (starts with S...)</b> and your Stellar Address (starts with G...).<br>"
-                "<b>Never share your Secret Key with anyone, ever!</b>",
-        "img": "https://i.imgur.com/3dfu7uH.png"
+        "desc": "Once logged in, <b>write down your Secret Key (starts with S...)</b> and your Stellar Address (starts with G...).<br><b>Never share your Secret Key with anyone, ever!</b>",
+        "img": MEDUSA_IMAGE_URL
     },
     {
         "title": "Step 4: Fund Your Wallet with XLM",
-        "desc": "Buy XLM (Stellar Lumens) on any major crypto exchange (Coinbase, Binance, Kraken, etc).<br>"
-                "Send your XLM to your Stellar Address. Double-check the address!",
-        "img": "https://i.imgur.com/W8wOnCJ.png"
+        "desc": "Buy XLM (Stellar Lumens) on any major crypto exchange (Coinbase, Binance, Kraken, etc).<br>Send your XLM to your Stellar Address. Double-check the address!",
+        "img": MEDUSA_IMAGE_URL
     },
     {
         "title": "Step 5: Ready to Pay?",
-        "desc": "In LOBSTR, click <b>Send</b>, paste Medusa's wallet address, enter your amount (see your contract), and confirm.<br>"
-                "Include the correct Memo if required.",
-        "img": "https://i.imgur.com/cbC6n5g.png"
+        "desc": "In LOBSTR, click <b>Send</b>, paste Medusa's wallet address, enter your amount (see your contract), and confirm.<br>Include the correct Memo if required.",
+        "img": MEDUSA_IMAGE_URL
     },
     {
         "title": "Step 6: Visual Help & Security",
-        "desc": "<a href='https://www.youtube.com/watch?v=WfXR9KceXZE' target='_blank'>Watch the LOBSTR setup video here</a>.<br>"
-                "<b>Never share your Secret Key or Recovery Phrase.</b> Use only the official LOBSTR app or website.",
-        "img": "https://i.imgur.com/3dcYhIw.png"
+        "desc": "<a href='https://www.youtube.com/watch?v=WfXR9KceXZE' target='_blank'>Watch the LOBSTR setup video here</a>.<br><b>Never share your Secret Key or Recovery Phrase.</b> Use only the official LOBSTR app or website.",
+        "img": MEDUSA_IMAGE_URL
     }
 ]
 
@@ -90,6 +86,6 @@ def complete():
         </body></html>
     """)
 
-# Do NOT use `if __name__ == "__main__"` for Render deployment.
-# Render will auto-detect app = Flask(__name__) for Gunicorn!
-
+# Only needed for local testing
+if __name__ == "__main__":
+    app.run(debug=True, port=7082)
